@@ -1,0 +1,16 @@
+
+<div class="header">
+    <img src=".//Logo.png" alt="School_logo" class="logo">
+    <div class="header-right">
+   <a [routerLink]="['./home']" (click)="onHomeClick">Home</a>
+   <!-- <button >Home</button> -->
+      <a href="#IRP">IRP</a>
+      <a href="#Corporate_Training">Corporate Training</a>
+      <a href="#Consulting">Consulting</a>
+      <a href="#Clients">Clients</a>
+      <a href="#Contact">Contact Us</a>
+    </div>
+  </div>
+  <!-- <a [routerLink]="['../home']">Home</a> -->
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>

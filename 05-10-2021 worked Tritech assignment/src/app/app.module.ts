@@ -1,26 +1,39 @@
-import {NgModule} from "@angular/core"
-import {BrowserModule} from "@angular/platform-browser"
-import {AppRootComponent} from "../appRoot/appRoot.component"
-import {EventsModule} from "../events/events.module"
-import { HttpClientModule } from '@angular/common/http'
-import {ReactiveFormsModule} from '@angular/forms';
-import {StatisticsModule} from "../statistics/statistics.module"
-import {gallery} from "../gallery/gallery.module"
-import{MenuModule} from "../menu/menu.module"
-import{QuickLinksModule} from "../quicklinks/quicklinks.module"
-import {ContactInfoModule} from "../contactinfo/contactinfo.module"
-import {TestimonialsModule} from "../testimonials/testimonials.module"
-import {FooterModule} from "../footer/footer.module"
-import {AppRoutingModule} from "../app/app-routing.module"
-import{ RouterModule} from'@angular/router'
-import { from } from 'rxjs';
-//declaration
-@NgModule({
-    declarations:[AppRootComponent],
-    imports:[BrowserModule,RouterModule,EventsModule,HttpClientModule,ReactiveFormsModule,StatisticsModule,gallery,MenuModule,QuickLinksModule,ContactInfoModule,TestimonialsModule,FooterModule,AppRoutingModule],
-    bootstrap:[AppRootComponent],
-    exports:[]
-})
-export class AppModule{
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import{SectionInfoControllerService} from "../app/services/sectionInfoController.service"
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import {AccountsModule} from './accounts/accounts.module';
+import {FormsModule} from '@angular/forms';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { ExcelhomeComponent } from './excelhome/excelhome.component';
+import { FooterComponent } from './footer/footer.component'
+import { MenuModule } from './menu/menu.module';
 
-}
+import {EventsModule} from "../app/events/events.module"
+
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AdmindashboardComponent,
+    ExcelhomeComponent,
+    FooterComponent
+   
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AccountsModule,
+    FormsModule,
+    MenuModule,EventsModule
+  ],
+  providers: [
+    {provide:SectionInfoControllerService,useClass:SectionInfoControllerService},
+      {provide:"SectionInfoAPIUrl",useValue:"http://localhost:5000/api/SectionInfo"}
+  ],
+  bootstrap: [AppComponent,FooterComponent]
+})
+export class AppModule { }

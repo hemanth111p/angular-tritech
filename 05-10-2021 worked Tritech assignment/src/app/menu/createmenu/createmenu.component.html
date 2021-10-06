@@ -1,0 +1,29 @@
+<div class="container">
+<div class="center"> 
+    <h1>Section Menu Details</h1>    
+
+<form [formGroup]="detailsform">
+    <table>  
+        <tr>
+        <td> 
+            <label>Title:</label><br><br></td>
+            <td> <input type="text" formControlName="title" placeholder="Enter the title" #titletextBox type="text" (input)="onTitleEdit(titletextBox.value)" [value]="Title"><br></td>
+            <td><span class="error" *ngIf="title!.invalid">*Title is required</span></td>
+            <br><br>
+        </tr>
+        <tr>
+            <td> <label>
+                Contents:</label><br><br></td>
+            <td> <input type="text" formControlName="contents" placeholder="Enter the Contents" #contenttextbox  type="text"  (input)="oncontentsEdit(contenttextbox.value)" [value]="contents"><br></td>
+                <td><span class="error" *ngIf="contents!.invalid">*Contents required</span></td>
+            <br><br>
+        </tr>
+        <tr>
+            <td><form [formGroup]="detailsform" (ngSubmit)="onSubmit(detailsform.value)"></form></td>   
+            <button type="submit" (click)="onSubmit(detailsform.value)">Submit</button>
+            <button (click)="onClear()" type="reset">Reset</button>
+        </tr>
+    </table>
+</form>
+</div>
+</div>
